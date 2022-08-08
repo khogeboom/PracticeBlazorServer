@@ -1,0 +1,44 @@
+﻿@inherits LayoutComponentBase
+
+<PageTitle>BlazorApp</PageTitle>
+
+<div class="page">
+    <div class="sidebar">
+        <NavMenu />
+    </div>
+
+    <main>
+        <div class="top-row px-4 bg-primary">
+            <span class="flex-fill text-white">Experimental Page</span>
+            <button class="btn btn-success mx-2" @onclick="ThumbsUp">
+                <dpan class="oi oi-thumb-up"></dpan> Approvals - @approvals
+            </button>
+            <button class="btn btn-danger mx-2" @onclick="ThumbsDown">
+                <span class="oi oi-thumb-down"></span> Disapprovals - @disapprovals
+            </button>
+        </div>
+
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
+
+<footer class="text-center">
+    Copyright @DateTime.Now.Year by TimCo Enterprises
+</footer>
+
+@code {
+    private int approvals = 0;
+    private int disapprovals = 0;
+
+    private void ThumbsUp()
+    {
+        approvals += 1;
+    }
+
+    private void ThumbsDown()
+    {
+        disapprovals += 1;
+    }
+}
